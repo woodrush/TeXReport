@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{jsarticle}
+\setlength{\columnsep}{3zw}
+%
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color} 
+\usepackage{ascmac}
+\usepackage{here}
+\usepackage{enumerate}
+\usepackage{cases}
+\usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{lscape}
+\renewcommand*{\proofname}{Solution}
+%
+\setlength{\textwidth}{1.1\fullwidth}
+% \setlength{\textheight}{38\baselineskip}
+\addtolength{\textheight}{\topskip}
+\setlength{\hoffset}{-0.15in}
+\setlength{\voffset}{-0.2in}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+%
+
+\newcommand{\inputfig}[3]{
+% Uncomment following line and delete the next to force figure to be in place of the command
+% \begin{figure}[H]
+\begin{figure}
+    \centering
+    \includegraphics[scale=#3]{./Figures/#1}
+    \caption{#2}
+    \label{fig:#1}
+\end{figure}
+}
+\newcommand{\inputgraph}[3]{
+% Uncomment this line and delete the next to force figure to be in place of the command
+% \begin{figure}[H]
+\begin{figure}
+    \centering
+    \resizebox{#3\hsize}{!}{\input{graphs/#1.tex}}
+    \caption{#2}
+    \label{graph:#1}
+\end{figure}
+}
+\newcommand{\inputtable}[2]{
+% Uncomment this line and delete the next to force table to be in place of the command
+% \begin{table}[H]
+\begin{table}
+	\caption{#2}
+	\label{table:#1}
+	\centering
+	\small
+    \input{tables/#1.tex}
+\end{table}
+}
+%
