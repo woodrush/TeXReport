@@ -2,7 +2,7 @@ TARGET = report
 GRAPHGENDIR = ./GraphGen
 FIGURESDIR  = ./Figures
 TABLEGENDIR = ./TableGen
-SUBTARGETS = .graph .fig .table $(wildcard ./tables/*.tex) $(wildcard ./graphs/*.tex) $(wildcard ./*.tex) 
+SUBTARGETS = .graph .fig .table $(wildcard ./tables/*.tex) $(wildcard ./graphs/*.tex) $(wildcard ./scripts/*.tex) $(wildcard ./*.tex) 
 
 all:
 	make $(TARGET).pdf
