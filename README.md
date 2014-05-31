@@ -7,6 +7,7 @@ Features
 - Make TeX tables simply from CSV
 - Make graphs simply with Octave (Octave installation required)
 - Simple BibTeX integrity (now in development)
+- Automatically replaces Japanese punctuations "、。" to commas and periods "，．"
 
 How to use
 
@@ -78,6 +79,8 @@ TeXReportのreport.texを開き、適当に編集し、　Command + B　キー�
 - テーブル：TableGenディレクトリ内にCSVファイルを入れておくことで、\inputtableというTeXコマンドで表を出力可能。
 - 図：Figures内に画像を入れておくことで、\inputfigというTeXコマンドで図を出力可能。
 
+## 設定
+- Makefile中のREPLACEPUNCを0に設定する事で、「、。」→「，．」の自動置換が無効になります。0以外の値に設定することで有効化されます。
 
 # 参考文献：
 
