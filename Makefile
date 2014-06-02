@@ -20,6 +20,7 @@ $(TARGET).pdf: .$(TARGET).dvi
 	if [ "$$?" != "0" ]; then rm -rf $(TARGET).dvi; make hide; exit 1; fi;
 	bibtex  $(TARGET)
 	platex $(TARGET).tex
+	platex $(TARGET).tex
 	@make hide
 
 .punc: $(wildcard ./*.tex)
