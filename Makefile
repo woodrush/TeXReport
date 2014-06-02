@@ -2,8 +2,9 @@ TARGET = report
 GRAPHGENDIR = ./GraphGen
 FIGURESDIR  = ./Figures
 TABLEGENDIR = ./TableGen
+BIBTEXDIR = ./BibTeX
 SUBTARGETS = $(wildcard ./tables/*.tex) $(wildcard ./graphs/*.tex) $(wildcard ./scripts/*.tex)
-HIDDENTARGETS = .graph .fig .table .punc
+HIDDENTARGETS = .graph .fig .table .punc .bibtex
 HIDEEXTENSIONS = aux dvi log idx bbl blg
 REPLACEPUNC = 1
 
@@ -18,10 +19,14 @@ $(TARGET).pdf: .$(TARGET).dvi
 .$(TARGET).dvi: $(SUBTARGETS) $(HIDDENTARGETS)
 	platex $(TARGET).tex;\
 	if [ "$$?" != "0" ]; then rm -rf $(TARGET).dvi; make hide; exit 1; fi;
-	bibtex  $(TARGET)
+	bibtex $(TARGET)
 	platex $(TARGET).tex
 	platex $(TARGET).tex
 	@make hide
+
+.bibtex: $(wildcard ./$(BIBTEXDIR)/*.bib)
+	./scripts/grandbibtex.sh
+	@touch .bibtex
 
 .punc: $(wildcard ./*.tex)
 	if [ $(REPLACEPUNC) != "" ]; then sed -i '' -e 's/、/，/' $?; fi
@@ -43,7 +48,7 @@ $(TARGET).pdf: .$(TARGET).dvi
 #======================================================================
 .PHONY: clean hide
 clean:
-	for i in $(GRAPHGENDIR) $(FIGURESDIR) $(TABLEGENDIR); do [ ! -f $$i/* ] || touch $$i/*; done
+	for i in $(GRAPHGENDIR) $(FIGURESDIR) $(TABLEGENDIR) $(BIBTEXDIR) ; do [ ! -f $$i/* ] || touch $$i/*; done
 	for i in $(HIDEEXTENSIONS); do [ ! -f .$(TARGET).$$i ] || rm -rf .$(TARGET).$$i; done
 	for i in $(HIDDENTARGETS); do [ ! -f .$$i ] || rm -rf $$i; done
 	[ ! -f texput.log ] || rm -rf texput.log
