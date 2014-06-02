@@ -4,7 +4,7 @@ FIGURESDIR  = ./Figures
 TABLEGENDIR = ./TableGen
 SUBTARGETS = $(wildcard ./tables/*.tex) $(wildcard ./graphs/*.tex) $(wildcard ./scripts/*.tex)
 HIDDENTARGETS = .graph .fig .table .punc
-HIDEEXTENSIONS = aux dvi log idx
+HIDEEXTENSIONS = aux dvi log idx bbl blg
 REPLACEPUNC = 1
 
 all:
