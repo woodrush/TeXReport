@@ -22,8 +22,8 @@ $(TARGET).pdf: .$(TARGET).dvi
 	@make hide
 
 .punc: $(wildcard ./*.tex)
-	if [ $(REPLACEPUNC) != "" ]; then sed -i '' -e 's/、/，/' $?; fi
-	if [ $(REPLACEPUNC) != "" ]; then sed -i '' -e 's/。/．/' $?; fi
+	if [ $(REPLACEPUNC) != "" ]; then sed -i '' -e 's/、/，/g' $?; fi
+	if [ $(REPLACEPUNC) != "" ]; then sed -i '' -e 's/。/．/g' $?; fi
 	@touch .punc
 
 .graph: $(wildcard ./$(GRAPHGENDIR)/*.m)
