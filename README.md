@@ -87,27 +87,28 @@ TeXReportでは、JPG画像やPNG画像をそのままTeX文書に挿入でき�
 ######図の挿入
 ./Figuresディレクトリ内に画像を入れておく。すると、
 
-	\inputfig{ファイル名.拡張子}{キャプション}{倍率}
+	\inputfig{ファイル名.拡張子}{キャプション文章}{倍率}
 	\ref{fig:ファイル名.拡張子}
 
-で呼び出し・参照が可能。
+で呼び出し・参照が可能。ここで、「倍率」は「0.8」「1」などの数値。
 
 ######表の挿入
 ./TableGenディレクトリ内にCSVファイルを入れておく。すると、
 
-    \inputtable{sampletable}{Caption for the sample table.}
-    \ref{table:sampletable}
+    \inputtable{ファイル名}{キャプション文章}
+    \ref{table:ファイル名}
 
-で呼び出し・参照が可能。
+で呼び出し・参照が可能。ここで、テーブル名はCSVファイルのファイル名。
 
 ######グラフの挿入
 別途、Octaveをインストールする。
 ./GraphGen内のサンプルを参考に、グラフを出力するOctaveスクリプトを作製。すると、
 
-    \inputgraph{samplegraph}{Caption for the sample graph.}{0.8}
-    \ref{graph:samplegraph}
+    \inputgraph{ファイル名}{キャプション}{0.8}
+    \ref{graph:ファイル名}
 
-で呼び出し・参照が可能。
+で呼び出し・参照が可能。ここで、「ファイル名」はmファイルのファイル名、「倍率」は「0.8」「1」などの数値。
+
 
 ###Tips
 - scripts/settings.texから、フォントサイズ、パッケージなどの設定が編集可能。
