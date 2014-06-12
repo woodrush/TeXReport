@@ -62,22 +62,3 @@ xlabel('Time $t$\,(s)');
 ylabel('Concentration (mol/L)');
 axis([0 maxtime -1 6]);
 legend({'$c_1$','$c_2$','$u_0$','$\tilde c_1$','$\tilde c_2$','$\tilde u_0$'},'location','east');
-
-
-%======================================================================
-% Printing settings
-h=figure(1);
-W = 5; H = 3;
-set(h,'PaperUnits','inches')
-set(h,'PaperOrientation','portrait');
-set(h,'PaperSize',[H,W])
-set(h,'PaperPosition',[0,0,W,H])
-
-FN = findall(h,'-property','FontName');
-set(FN,'FontName','/usr/share/fonts/dejavu/DejaVuSerifCondensed.ttf');
-FS = findall(h,'-property','FontSize');
-set(FS,'FontSize',11);
-
-%======================================================================
-% Always include code below for printing graphs
-print(h, '-depslatex', '-color', 'graph.eps');

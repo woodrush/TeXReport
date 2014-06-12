@@ -40,8 +40,13 @@ FILENAME=`echo "$SOURCEFILE" | sed -e "s/$GRAPHGENDIR\///" | sed -e 's/\.m$//'`
 if [ "$FILENAME" = "" ]; then error; fi
 [ -f "$SOURCEFILE" ] || error "file $SOURCEFILE does not exist."
 echo "Generating graph from $SOURCEFILE ..."
+
+# By generating the TeX file inside $GRAPHGENDIR, it makes it able to create an m file named "graph.m"
 cd $GRAPHGENDIR
-$OCTAVE -qf ../$SOURCEFILE
+cat ../scripts/graphTemplateHeader.m > .temp.m
+cat ./$FILENAME.m >> .temp.m
+cat ../scripts/graphTemplateFooter.m >> .temp.m
+$OCTAVE -qf ./.temp.m
 
 cd ../
 [ -f "$GRAPHGENDIR/graph.tex" ] || error "$GRAPHGENDIR/graph.tex has not been generated for some reason."
