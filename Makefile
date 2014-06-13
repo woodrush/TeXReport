@@ -19,7 +19,7 @@ $(TARGET).pdf: .$(TARGET).dvi
 .$(TARGET).dvi: $(SUBTARGETS) $(HIDDENTARGETS)
 	platex $(TARGET).tex;\
 	if [ "$$?" != "0" ]; then rm -rf $(TARGET).dvi; make hide; exit 1; fi;
-	bibtex $(TARGET)
+	pbibtex $(TARGET)
 	platex $(TARGET).tex
 	platex $(TARGET).tex
 	@make hide
