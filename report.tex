@@ -1,29 +1,29 @@
 \input{./scripts/settings}
-\title{\TeX\ Report Sample}
+\title{\TeX\ Report サンプル}
 \author{@hikuta924}
 \date{\today}
 \begin{document}
 \maketitle
 
 %======================================================================
-\section{The first section}
+\section{第一節}
+TeXファイル中の句読点「、。」は自動的に全角カンマ・ピリオド「，．」に置換されます。
 \begin{equation}
 	e^{i \pi} = -1.
 \end{equation}
-ファイル中の句読点は自動的にカンマ・ピリオド「、。」に置換されます。
 
 %======================================================================
-\section{The second section}
-Figure \ref{fig:samplefigure} is an example of a sample figure.
+\section{第二節}
+図\ref{fig:samplefigure}に、図の挿入の例を示す。
 % Figure \ref{graph:samplegraph} is an example of a sample graph.
-Table \ref{table:sampletable} is an example of a sample table.
+また、表\ref{table:sampletable}に、表の挿入の例を示す。
 
-\inputfig{samplefigure}{Caption for the sample figure.}{0.4}
+\inputfig{samplefigure}{図サンプルの見出し．}{0.4}
 % \inputgraph{samplegraph}{Caption for the sample graph.}{0.8}
-\inputtable{sampletable}{Caption for the sample table.}
+\inputtable{sampletable}{表サンプルの見出し．}
 
 %======================================================================
-\begin{thebibliography}{AAA999}
-    \bibitem[H14]{H14} hikuta924. TeXReport. {\em Github}. Retrieved 5.19.2014 20:13, from https://github.com/hikuta924/
+\begin{thebibliography}{A99}
+    \bibitem[H14]{H14} hikuta924. TeXReport. {\em Github}. Retrieved 5.19.2014 20:13, from https://github.com/hikuta924/TeXReport
 \end{thebibliography}
 \end{document}
