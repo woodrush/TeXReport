@@ -1,5 +1,21 @@
 #TeXReport
+TeX書類を簡単に作るためのshellscript・Makefileです。
 
+###主な機能
+
+- Sublime Textで「Command + B」するだけでPDFが作成可能（あるいは、他のエディタからmakeするだけ）
+- 図を簡単に挿入可能（PNG、JPEGなどを指定のフォルダに入れておくだけ）
+- 句読点「、。」を自動的に全角カンマ・ピリオド「，．」に置換
+- 表をCSVファイルから作成・参照可能（エクセル・Numbersから表をコピーしテキストエディタに貼り付けだけで表が作れます）
+- Octaveをインストールしている場合、mファイルが生成するグラフを直接貼り付け可能
+
+###使い方
+
+- レポートごとにフォルダ全体をコピー
+- report.tex を編集
+- makeする (Sublime Textなら、Command + Bを押すだけ)
+
+<!------
 ###Features
 
 - Insert figures simply
@@ -14,9 +30,9 @@ Only 3 simple steps are required:
 - Copy the entire directory per report/article
 - Edit report.tex
 - Press Command + B on Sublime Text (Or use Make)
-
+-->
 ----
-#インストール説明(Mac OS Xの場合)
+##インストール説明(Mac OS Xの場合)
 
 ### TeXのインストール
 (既にTeXをインストールしている場合は、次のステップへ)
@@ -25,6 +41,8 @@ http://www.tug.org/mactex/ からMacTeXをダウンロードし、TeXに必要�
 
 
 ### Makeのインストール
+(既にMakeをインストールしている場合は、次のステップへ)
+
 Apple Accountを取得し、Xcodeをインストールする。（参考：http://www.cse.kyoto-su.ac.jp/~oomoto/lecture/program/tips/Xcode_install/ の、「App StoreによるXcodeのダウンロード」まで。）
 
 インストール後、「Xcode Developer Tools」をインストールする。ここにMakeが入っている。
@@ -43,7 +61,7 @@ Sublime Textをインストールする：http://www.sublimetext.com/
 
 Sublime Textの上部メニューから
 
-Sublime Text 2 -> Preferences -> Settings - User
+- Sublime Text 2 -> Preferences -> Settings - User
 
 を選択する。ファイルが現れるので、内容を全て
 
@@ -69,9 +87,10 @@ TeXReportのreport.texを開き、適当に編集し、　Command + B　キー�
 ###エラーが出た場合
 - File \`dvipdfm.def not found. - 「LaTeXで「File \`dvipdfm.def' not found.」というエラーがでるときの対処法」
 http://d.hatena.ne.jp/Yusk/20131016/1381902811
-を、　scripts/settings.tex　で行う
+を、　Templates/header.tex　で行う
 
-# レポートの作り方
+---
+## レポートの作り方
 ###手順
 3ステップでできます。
 
@@ -90,7 +109,7 @@ TeXReportでは、JPG画像やPNG画像をそのままTeX文書に挿入でき�
 	\inputfig{ファイル名.拡張子}{キャプション文章}{倍率}
 	\ref{fig:ファイル名.拡張子}
 
-で呼び出し・参照が可能。ここで、「倍率」は「0.8」「1」などの数値。
+というTeXコマンドで呼び出し・参照が可能。ここで、「倍率」は「0.8」「1」などの数値を入力。
 
 ######表の挿入
 ./TableGenディレクトリ内にCSVファイルを入れておく。すると、
@@ -98,24 +117,34 @@ TeXReportでは、JPG画像やPNG画像をそのままTeX文書に挿入でき�
     \inputtable{ファイル名}{キャプション文章}
     \ref{table:ファイル名}
 
-で呼び出し・参照が可能。ここで、テーブル名はCSVファイルのファイル名。
+というTeXコマンドで呼び出し・参照が可能。ここで、テーブル名はCSVファイルのファイル名を入力。
 
 ######グラフの挿入
-別途、Octaveをインストールする。
-./GraphGen内のサンプルを参考に、グラフを出力するOctaveスクリプトを作製。すると、
+Octaveをインストールする。
+
+Makefileのあるディレクトリに、
+
+- GraphGen
+- graphs
+というディレクトリを作成する。
+
+figure(1)に、所望の図を出力するOctaveスクリプトを作製する。
+
+すると、
 
     \inputgraph{ファイル名}{キャプション}{0.8}
     \ref{graph:ファイル名}
 
-で呼び出し・参照が可能。ここで、「ファイル名」はmファイルのファイル名、「倍率」は「0.8」「1」などの数値。
+というTeXコマンドで呼び出し・参照が可能。ここで、「ファイル名」はmファイルのファイル名、「倍率」は「0.8」「1」などの数値を入力。
 
 
 ###Tips
-- scripts/settings.texから、フォントサイズ、パッケージなどの設定が編集可能。
+- Templates/header.texから、フォントサイズ、パッケージなどの設定が編集可能。
 - Makefile中のREPLACEPUNCを0に設定する事で、「、。」→「，．」の自動置換が無効になります。0以外の値に設定することで有効化されます。
 - 困ったときは、ターミナルでTeXReportのディレクトリに移動し、「make clean」を実行して下さい。
 
-# 参考文献：
+----
+## 参考文献：
 
 - トリビアなmakefile入門	基本的な知識すべて	http://www.jsk.t.u-tokyo.ac.jp/~k-okada/makefile/
 - TeX Wiki Make		.PHONYの使い方	http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?Make
