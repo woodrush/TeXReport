@@ -59,11 +59,7 @@ TeXReportのフォルダへcdし、　make　コマンドを実行
 
 Sublime Textをインストールする：http://www.sublimetext.com/
 
-Sublime Textの上部メニューから
-
-- Sublime Text 2 -> Preferences -> Settings - User
-
-を選択する。ファイルが現れるので、内容を全て
+Sublime Textの上部メニューから Sublime Text 2 -> Preferences -> Settings - User を選択する。ファイルが現れるので、内容を全て
 
     {
         "build_env":
@@ -72,15 +68,11 @@ Sublime Textの上部メニューから
         }
     }
 
-に変更し、保存する。保存後、Sublime Textを終了し、再び開く。
+に変更し、保存する（すでに他の項目が存在する場合、"build_env"のブロックが追加されれば可）。保存後、Sublime Textを終了し、再び開く。
 
 <!--（これは、/bin内のcd、rmコマンドや、/usr/texbin内のdvipdfmxコマンドなどをSublime Textから呼び出すために必要。）
 -->
-Sublime Textの上部メニューから
-
-Tools -> Build System -> Make
-
-を選択する。
+Sublime Textの上部メニューから Tools -> Build System -> Make を選択する。
 
 TeXReportのreport.texを開き、適当に編集し、　Command + B　キーを押し、コンパイルされるか試す。
 
@@ -128,14 +120,14 @@ Makefileのあるディレクトリに、
 - graphs
 というディレクトリを作成する。
 
-figure(1)に、所望の図を出力するOctaveスクリプトを作製する。
+figure(1)に所望の図を出力するようなOctaveスクリプトを作成し、GraphGenディレクトリ内に配置。
 
 すると、
 
     \inputgraph{ファイル名}{キャプション}{0.8}
     \ref{graph:ファイル名}
 
-というTeXコマンドで呼び出し・参照が可能。ここで、「ファイル名」はmファイルのファイル名、「倍率」は「0.8」「1」などの数値を入力。
+というTeXコマンドで呼び出し・参照が可能。ここで、「ファイル名」はmファイルのファイル名（拡張子は含めない）、「倍率」は「0.8」「1」などの数値を入力。
 
 
 ###Tips
