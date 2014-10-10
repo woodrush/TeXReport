@@ -13,15 +13,12 @@ all:
 	open -a Preview $(TARGET).pdf
 
 #======================================================================
-$(TARGET).pdf: .$(TARGET).dvi
-	dvipdfmx -o $(TARGET).pdf $<
-
-.$(TARGET).dvi: $(SUBTARGETS) $(HIDDENTARGETS)
-	platex $(TARGET).tex;\
+$(TARGET).pdf: $(SUBTARGETS) $(HIDDENTARGETS)
+	pdflatex $(TARGET).tex;\
 	if [ "$$?" != "0" ]; then rm -rf $(TARGET).dvi; make hide; exit 1; fi;
-	pbibtex $(TARGET)
-	platex $(TARGET).tex
-	platex $(TARGET).tex
+	bibtex $(TARGET)
+	pdflatex $(TARGET).tex;
+	pdflatex $(TARGET).tex;
 	@make hide
 
 .bibtex: $(wildcard ./$(BIBTEXDIR)/*.bib)
